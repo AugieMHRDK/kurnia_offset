@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+ 
+RewriteEngine On
+ 
+RewriteRule ^(.*)$ public/$1 [L]
+
+RewriteCond %{HTTP:X-Original-Host} \.ngrok\.io$ [NC]
+RewriteRule .* - [E=HTTP_X_FORWARDED_HOST:%{HTTP:X-Original-Host}]
+ 
+</IfModule>
